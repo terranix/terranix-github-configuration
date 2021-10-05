@@ -1,0 +1,96 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1633074215,
+        "narHash": "sha256-epmR1H1amgFWuU7xW9OXGjsAqltMqCSqkv1U2+9rOlM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "378d2c5dcec7fef958cca3760448c09a9be2b7a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "terranix": "terranix"
+      }
+    },
+    "terranix": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "terranix-examples": "terranix-examples"
+      },
+      "locked": {
+        "lastModified": 1633461225,
+        "narHash": "sha256-n+hv+5aWq//YcS3+qG5UNG+Y6QItNh9aT8ffyRF7UKU=",
+        "owner": "terranix",
+        "repo": "terranix",
+        "rev": "9be601fbb1b91e3ac6a309074af2966c3b2b824d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "terranix",
+        "ref": "develop",
+        "repo": "terranix",
+        "type": "github"
+      }
+    },
+    "terranix-examples": {
+      "locked": {
+        "lastModified": 1633465479,
+        "narHash": "sha256-D2VCGa30eeVSP9mr1jtMhbweBofHAevUSEc07PK5rNo=",
+        "owner": "terranix",
+        "repo": "terranix-examples",
+        "rev": "3542962c054e532b8d15cc6899bc4a7cd8355abd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "terranix",
+        "repo": "terranix-examples",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
