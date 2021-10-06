@@ -1,5 +1,12 @@
 {
-  imports = [ ./provider.nix ./modules/teams.nix ];
+
+  imports = [ ./modules ];
+
+  github.provider = {
+    enable = true;
+    owner = "terranix";
+    #version = "4.16.0";
+  };
 
   # repositories
   resource.github_repository = let
@@ -49,23 +56,19 @@
     ];
   };
 
-  # Create a milestone for a repository
-  resource.github_repository_milestone = let
+  github.milestones = [{
     owner = "terranix";
     repository = "terranix";
-  in {
-    flakes = {
-      inherit owner repository;
-      description = "bring terranix in the world of flakes";
-      state = "open";
-      title = "2.4.0";
-    };
-    next_big_thing = {
-      inherit owner repository;
-      description = "next big thing";
-      state = "open";
-      title = "2.5.0";
-    };
-  };
+    milestones = [
+      {
+        title = "2.4.0";
+        description = "bring flakes to terranix";
+      }
+      {
+        title = "2.5.0";
+        description = "next level";
+      }
+    ];
+  }];
 
 }
