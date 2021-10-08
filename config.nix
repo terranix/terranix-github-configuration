@@ -5,11 +5,9 @@
   github.provider = {
     enable = true;
     owner = "terranix";
-    #version = "4.16.0";
   };
 
-  # repositories
-  resource.github_repository = let
+  github.repositories = let
     visibility = "public";
     homepage_url = "https://terranix.org";
     topics = [ "nix" "terraform" ];
@@ -18,57 +16,78 @@
     has_downloads = true;
     license_template = "gpl-3.0";
   in {
-    terranix-github-configuration = {
-      name = "terranix-github-configuration";
-      description = "terranix project configuration on github";
-      inherit visibility homepage_url topics vulnerability_alerts has_issues
-        license_template;
-    };
-    terranix-examples = {
-      name = "terranix-examples";
-      description = "examples/templates on how to use terranix";
-      inherit visibility homepage_url topics vulnerability_alerts has_issues
-        has_downloads license_template;
-    };
     terranix = {
-      name = "terranix";
+      teams = [ "admins" "core" ];
       description =
         "terranix is a terraform.json generator with a nix-like feeling";
       inherit visibility homepage_url topics vulnerability_alerts has_issues
         has_downloads license_template;
     };
+    terranix-examples = {
+      teams = [ "admins" "core" "modules" ];
+      description = "examples/templates on how to use terranix";
+      inherit visibility homepage_url topics vulnerability_alerts has_issues
+        has_downloads license_template;
+    };
+    terranix-github-configuration = {
+      teams = [ "admins" ];
+      description = "terranix project configuration on github";
+      inherit visibility homepage_url topics vulnerability_alerts has_issues
+        license_template;
+    };
     terranix-website = {
-      name = "terranix-website";
+      teams = [ "admins" "website" ];
       description = "https://terranix.org website";
       inherit visibility homepage_url topics vulnerability_alerts has_issues
         license_template;
     };
   };
 
-  github.team.admins = {
-    maintainers = [ "mrvandalo" ];
-    members = [ "mrvandalo-springer" ];
-    repositories = [
-      "terranix"
-      "terranix-examples"
-      "terranix-website"
-      "terranix-github-configuration"
-    ];
+  github.teams = {
+    admins = {
+      maintainers = [ "mrvandalo" ];
+      privacy = "closed";
+    };
+    core = {
+      maintainers = [ "mrvandalo" ];
+      privacy = "closed";
+    };
+    website = {
+      maintainers = [ "mrvandalo" ];
+      privacy = "closed";
+    };
+    modules = {
+      maintainers = [ "mrvandalo" ];
+      privacy = "closed";
+    };
   };
 
-  github.milestones = [{
-    owner = "terranix";
-    repository = "terranix";
-    milestones = [
-      {
-        title = "2.4.0";
-        description = "bring flakes to terranix";
-      }
-      {
-        title = "2.5.0";
-        description = "next level";
-      }
-    ];
-  }];
+  github.milestones = [
+    {
+      owner = "terranix";
+      repository = "terranix";
+      milestones = [
+        {
+          title = "2.4.0";
+          description = "bring flakes to terranix";
+        }
+        {
+          title = "2.5.0";
+          description = "next level";
+        }
+      ];
+    }
+    {
+      owner = "terranix";
+      repository = "terranix-website";
+      milestones = [{
+        title = "1.0.0";
+        description = ''
+          Re-brand the whole terranix website
+          and bring it back on the map
+        '';
+      }];
+    }
+  ];
 
 }

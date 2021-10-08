@@ -1,20 +1,43 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.github.team;
+let cfg = config.github.teams;
 in {
-  options.github.team = mkOption {
+  options.github.teams = mkOption {
     default = { };
     type = with types;
       attrsOf (submodule ({ name, ... }: {
         options = {
+
+          # inherited parameter
+          # -------------------
+
           name = mkOption {
-            type = str;
             default = name;
+            type = str;
           };
           description = mkOption {
-            default = "";
-            type = str;
+            default = null;
+            type = nullOr str;
           };
+          privacy = mkOption {
+            default = null;
+            type = nullOr (enum [ "secret" "closed" ]);
+          };
+
+          # special parameter
+          # -----------------
+
+          extraConfig = mkOption {
+            type = attrs;
+            default = { };
+            description = ''
+              To set additional parameters from
+              https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team
+              which are not covered yet.
+              extraConfig will override every other parameter provider by this github terranix module.
+            '';
+          };
+
           members = mkOption {
             default = [ ];
             type = listOf str;
@@ -36,8 +59,10 @@ in {
     let mergeAll = function: mkMerge (flatten (mapAttrsToList function cfg));
     in mkIf (cfg != { }) {
 
-      resource.github_team =
-        mapAttrs (name: value: { inherit (value) name description; }) cfg;
+      resource.github_team = mapAttrs (name: value:
+        {
+          inherit (value) name description privacy;
+        } // value.extraConfig) cfg;
 
       resource.github_team_membership = mergeAll (team_name:
         { name, maintainers, members, ... }:
@@ -47,7 +72,7 @@ in {
             username = maintainer;
             role = "maintainer";
           };
-        }) maintainers) ++
+        }) (unique maintainers)) ++
 
         (imap0 (index: member: {
           "${team_name}_member_${toString index}" = {
@@ -55,7 +80,7 @@ in {
             username = member;
             role = "member";
           };
-        }) members));
+        }) (unique members)));
 
       resource.github_team_repository = mergeAll (team_name:
         { repositories, ... }:
@@ -64,7 +89,7 @@ in {
             team_id = "\${github_team.${team_name}.id}";
             inherit repository;
           };
-        }) repositories);
+        }) (unique repositories));
     };
 
 }

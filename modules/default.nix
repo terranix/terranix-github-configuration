@@ -1,1 +1,1 @@
-{ imports = [ ./teams.nix ./provider.nix ./milestones.nix ]; }
+{ imports = [ ./teams.nix ./provider.nix ./milestones.nix ./repositories.nix ]; }
