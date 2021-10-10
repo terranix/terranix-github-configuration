@@ -15,31 +15,32 @@
     has_issues = true;
     has_downloads = true;
     license_template = "gpl-3.0";
+    delete_branch_on_merge = true;
   in {
     terranix = {
       teams = [ "admins" "core" ];
       description =
         "terranix is a terraform.json generator with a nix-like feeling";
       inherit visibility homepage_url topics vulnerability_alerts has_issues
-        has_downloads license_template;
+        delete_branch_on_merge has_downloads license_template;
     };
     terranix-examples = {
       teams = [ "admins" "core" "modules" ];
       description = "examples/templates on how to use terranix";
       inherit visibility homepage_url topics vulnerability_alerts has_issues
-        has_downloads license_template;
+        delete_branch_on_merge has_downloads license_template;
     };
     terranix-github-configuration = {
       teams = [ "admins" ];
       description = "terranix project configuration on github";
       inherit visibility homepage_url topics vulnerability_alerts has_issues
-        license_template;
+        delete_branch_on_merge license_template;
     };
     terranix-website = {
       teams = [ "admins" "website" ];
       description = "https://terranix.org website";
       inherit visibility homepage_url topics vulnerability_alerts has_issues
-        license_template;
+        delete_branch_on_merge license_template;
     };
   };
 

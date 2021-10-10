@@ -226,7 +226,7 @@ in {
 
           # todo
           colaborators = mkOption {
-            type = attrsOf (submodul ({ name, ... }: {
+            type = attrsOf (submodule ({ name, ... }: {
               options = {
                 name = mkOption {
                   type = str;
@@ -235,7 +235,7 @@ in {
                 };
                 permission = mkOption {
                   type =
-                    nullOf (enum [ "pull" "push" "maintain" "triage" "admin" ]);
+                    nullOr (enum [ "pull" "push" "maintain" "triage" "admin" ]);
                   default = null;
                   description = "permissions of this collaborator";
                 };

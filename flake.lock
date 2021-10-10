@@ -17,11 +17,11 @@
     },
     "flake-utils_2": {
       "locked": {
-        "lastModified": 1623875721,
-        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
         "type": "github"
       },
       "original": {
@@ -61,27 +61,22 @@
         "terranix-examples": "terranix-examples"
       },
       "locked": {
-        "lastModified": 1633461225,
-        "narHash": "sha256-n+hv+5aWq//YcS3+qG5UNG+Y6QItNh9aT8ffyRF7UKU=",
-        "owner": "terranix",
-        "repo": "terranix",
-        "rev": "9be601fbb1b91e3ac6a309074af2966c3b2b824d",
-        "type": "github"
+        "narHash": "sha256-zFfDYWqRUpJEvKK7uuVhMupKU1KSg/i3+j+/1JeDUVw=",
+        "path": "/home/palo/dev/terranix/terranix",
+        "type": "path"
       },
       "original": {
-        "owner": "terranix",
-        "ref": "develop",
-        "repo": "terranix",
-        "type": "github"
+        "path": "/home/palo/dev/terranix/terranix",
+        "type": "path"
       }
     },
     "terranix-examples": {
       "locked": {
-        "lastModified": 1633465479,
-        "narHash": "sha256-D2VCGa30eeVSP9mr1jtMhbweBofHAevUSEc07PK5rNo=",
+        "lastModified": 1633460746,
+        "narHash": "sha256-4xvhK7DzFX2BA6aafcOsWZmuhzQYRtHcLqel1VEXv6s=",
         "owner": "terranix",
         "repo": "terranix-examples",
-        "rev": "3542962c054e532b8d15cc6899bc4a7cd8355abd",
+        "rev": "c6f88d372750c28ff0bf49e1360efda904d12da0",
         "type": "github"
       },
       "original": {
