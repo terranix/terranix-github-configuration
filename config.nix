@@ -42,6 +42,12 @@
       inherit visibility homepage_url topics vulnerability_alerts has_issues
         delete_branch_on_merge license_template;
     };
+    terranix-module-github = {
+      teams = [ "admins" ];
+      description = "An opinionated github terranix module.";
+      inherit visibility homepage_url topics vulnerability_alerts has_issues
+        delete_branch_on_merge license_template;
+    };
   };
 
   github.teams = {
