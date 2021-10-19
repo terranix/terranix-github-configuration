@@ -1,7 +1,5 @@
 {
 
-  imports = [ ./modules ];
-
   github.provider = {
     enable = true;
     owner = "terranix";
