@@ -47,10 +47,23 @@
         delete_branch_on_merge license_template;
     };
     terranix-artwork = {
-      teams = [ "admins" ];
+      teams = [ "admins" "artwork" ];
       description = "An opinionated github terranix module.";
       license_template = "mit";
       inherit visibility homepage_url topics has_issues;
+    };
+  };
+
+  resource.github_branch_protection_v3.terranix-artwork = {
+    repository = "terranix-artwork";
+    branch = "main";
+    enforce_admins = false;
+    required_pull_request_reviews = {
+      dismiss_stale_reviews = false;
+      dismissal_teams = [ ];
+      dismissal_users = [ ];
+      require_code_owner_reviews = false;
+      required_approving_review_count = 1;
     };
   };
 
@@ -69,6 +82,11 @@
     };
     modules = {
       maintainers = [ "mrvandalo" ];
+      privacy = "closed";
+    };
+    artwork = {
+      maintainers = [ "mrvandalo" ];
+      members = [ "6erald" ];
       privacy = "closed";
     };
   };
