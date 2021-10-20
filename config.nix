@@ -48,7 +48,7 @@
     };
     terranix-artwork = {
       teams = [ "admins" "artwork" ];
-      description = "An opinionated github terranix module.";
+      description = "Official artwork of the terranix project.";
       license_template = "mit";
       inherit visibility homepage_url topics has_issues;
     };
