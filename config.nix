@@ -99,6 +99,7 @@
         {
           title = "2.4.0";
           description = "bring flakes to terranix";
+          state = "closed";
         }
         {
           title = "2.5.0";
