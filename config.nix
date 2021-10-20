@@ -46,6 +46,12 @@
       inherit visibility homepage_url topics vulnerability_alerts has_issues
         delete_branch_on_merge license_template;
     };
+    terranix-artwork = {
+      teams = [ "admins" ];
+      description = "An opinionated github terranix module.";
+      license_template = "mit";
+      inherit visibility homepage_url topics has_issues;
+    };
   };
 
   github.teams = {
