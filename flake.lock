@@ -67,11 +67,11 @@
         "terranix": "terranix"
       },
       "locked": {
-        "lastModified": 1635268139,
-        "narHash": "sha256-RspiTiUu/TGqCCvvhQQmOaPigMNVY9EnjRmrXYjEV2E=",
+        "lastModified": 1635268863,
+        "narHash": "sha256-y/UEAaU6UX+/eMP8VSCoiAWDHXbTUWKkmw1EAv13qRk=",
         "owner": "terranix",
         "repo": "terranix-module-github",
-        "rev": "bc3716d37920f9d2370023680fb6783f70e399e2",
+        "rev": "318b65fcf9adaa88a3e157ffe6ea5af797143d6b",
         "type": "github"
       },
       "original": {

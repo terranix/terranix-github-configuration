@@ -17,7 +17,7 @@
         terranixConfiguration = terranix.lib.buildTerranix {
           inherit pkgs;
           terranix_config.imports = [
-            module-github.defaultTerranixModule
+            module-github.terranixModule
             ./config.nix
           ];
         };
