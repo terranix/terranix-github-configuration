@@ -16,8 +16,10 @@
         terraform = pkgs.terraform_0_15;
         terranixConfiguration = terranix.lib.buildTerranix {
           inherit pkgs;
-          terranix_config.imports =
-            [ module-github.terranixModule ./config.nix ];
+          terranix_config.imports = [
+            module-github.defaultTerranixModule
+            ./config.nix
+          ];
         };
       in {
         defaultPackage = terranixConfiguration;

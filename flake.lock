@@ -2,11 +2,11 @@
   "nodes": {
     "flake-utils": {
       "locked": {
-        "lastModified": 1631561581,
-        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "lastModified": 1634851050,
+        "narHash": "sha256-N83GlSGPJJdcqhUxSCS/WwW5pksYf3VP1M13cDRTSVA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "rev": "c91f3de5adaf1de973b797ef7485e441a65b8935",
         "type": "github"
       },
       "original": {
@@ -67,11 +67,11 @@
         "terranix": "terranix"
       },
       "locked": {
-        "lastModified": 1634620337,
-        "narHash": "sha256-y/UEAaU6UX+/eMP8VSCoiAWDHXbTUWKkmw1EAv13qRk=",
+        "lastModified": 1635268139,
+        "narHash": "sha256-RspiTiUu/TGqCCvvhQQmOaPigMNVY9EnjRmrXYjEV2E=",
         "owner": "terranix",
         "repo": "terranix-module-github",
-        "rev": "9979d58f3acd5dfdd5fbb0249b1f9ae31e759876",
+        "rev": "bc3716d37920f9d2370023680fb6783f70e399e2",
         "type": "github"
       },
       "original": {
@@ -112,11 +112,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1634611351,
-        "narHash": "sha256-8ikzWlj/CgX3PWPWLvZMNuhXjT1B48tyPDxnCBKX6kw=",
+        "lastModified": 1635268020,
+        "narHash": "sha256-oaWU7ZvobClXLrQGj7Xvjs2vSlItPFkw/usKh/2c56Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bc1974e35d36f87fdbcebf0d5b18b1883af2e61a",
+        "rev": "89a27a2e6f54993224f804e50a29e48b8c83d1ca",
         "type": "github"
       },
       "original": {
