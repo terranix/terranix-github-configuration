@@ -105,6 +105,14 @@
           title = "2.5.0";
           description = "next level";
         }
+        {
+          title = "2.6.0";
+          description = "all together";
+        }
+        {
+          title = "3.0.0";
+          description = "yolo";
+        }
       ];
     }
     {
