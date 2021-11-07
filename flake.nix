@@ -21,13 +21,6 @@
             ./config.nix
           ];
         };
-        #terranixConfiguration = terranix.lib.buildTerranix {
-        #  inherit pkgs;
-        #  terranix_config.imports = [
-        #    module-github.terranixModule
-        #    ./config.nix
-        #  ];
-        #};
       in {
         defaultPackage = terranixConfiguration;
         # nix develop
