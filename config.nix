@@ -52,6 +52,12 @@
       license_template = "mit";
       inherit visibility homepage_url topics has_issues;
     };
+    packernix = {
+      teams = [ "packernix" ];
+      description = "Packernix";
+      license_template = "mit";
+      inherit visibility homepage_url topics has_issues;
+    };
   };
 
   resource.github_branch_protection_v3.terranix-artwork = {
@@ -82,6 +88,10 @@
     };
     modules = {
       maintainers = [ "mrvandalo" ];
+      privacy = "closed";
+    };
+    packernix = {
+      maintainers = [ "mrvandalo" "4z3"];
       privacy = "closed";
     };
     artwork = {
