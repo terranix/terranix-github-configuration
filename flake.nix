@@ -23,11 +23,13 @@
         };
       in {
         defaultPackage = terranixConfiguration;
+
         # nix develop
         devShell = pkgs.mkShell {
           buildInputs =
             [ pkgs.terraform_0_15 terranix.defaultPackage.${system} ];
         };
+
         # nix run ".#apply"
         apps.apply = {
           type = "app";
@@ -38,6 +40,7 @@
               && ${terraform}/bin/terraform apply
           '');
         };
+
         # nix run ".#destroy"
         apps.destroy = {
           type = "app";
@@ -48,7 +51,8 @@
               && ${terraform}/bin/terraform destroy
           '');
         };
+
         # nix run
-        defaultApp = self.apps.${system}.apply;
+        apps.default = self.apps.${system}.apply;
       });
 }
