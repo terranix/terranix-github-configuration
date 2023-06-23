@@ -91,6 +91,12 @@
     };
   };
 
+  resource.github_branch_protection_v3.terranix = {
+    repository = "terranix";
+    branch = "main";
+    enforce_admins = false;
+  };
+
   github.teams = {
     admins = {
       maintainers = [ "mrvandalo" ];
