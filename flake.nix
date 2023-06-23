@@ -6,14 +6,17 @@
       url = "github:terranix/terranix/develop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    module-github.url = "github:terranix/terranix-module-github";
+    module-github = {
+      url = "github:terranix/terranix-module-github";
+      #url = "git+file:///home/palo/dev/terranix/terranix-module-github";
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils, terranix, module-github }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        terraform = pkgs.terraform_0_15;
+        terraform = pkgs.terraform;
         terranixConfiguration = terranix.lib.terranixConfiguration {
           inherit system;
           modules = [
@@ -21,7 +24,8 @@
             ./config.nix
           ];
         };
-      in {
+      in
+      {
         defaultPackage = terranixConfiguration;
 
         # nix develop
@@ -53,6 +57,6 @@
         };
 
         # nix run
-        apps.default = self.apps.${system}.apply;
+        #apps.default = self.apps.${system}.apply;
       });
 }
