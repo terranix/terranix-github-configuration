@@ -41,6 +41,8 @@
         in
         {
 
+          apps.default = self'.apps.apply;
+
           # nix run ".#apply"
           apps.apply = {
             type = "app";

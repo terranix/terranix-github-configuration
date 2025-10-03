@@ -12,6 +12,7 @@
       topics = [
         "nix"
         "terraform"
+        "opentofu"
       ];
       vulnerability_alerts = true;
       has_issues = true;
@@ -20,6 +21,33 @@
       delete_branch_on_merge = true;
     in
     {
+      "website" = {
+        name = "terranix.github.io";
+        teams = {
+          "admins" = "admin";
+          "website" = "maintain";
+        };
+        description = "https://terranix.org website (mdbook)";
+        inherit
+          visibility
+          homepage_url
+          topics
+          vulnerability_alerts
+          has_issues
+          delete_branch_on_merge
+          has_downloads
+          ;
+        extraConfig = {
+          pages = {
+            build_type = "workflow";
+            cname = "terranix.org";
+            source = {
+              branch = "main";
+              path = "/";
+            };
+          };
+        };
+      };
       terranix = {
         teams = {
           "admins" = "admin";
@@ -143,7 +171,7 @@
       maintainers = [ "mrvandalo" ];
       description = "maintainers, have merge and push permissions on the terranix repositories.";
       members = [
-        "mdarocha"
+        #"mdarocha"
         "sshine"
       ];
       privacy = "closed";
