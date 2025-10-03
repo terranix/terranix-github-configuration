@@ -30,7 +30,7 @@
           ...
         }:
         let
-          terraform = pkgs.terraform;
+          opentofu = "${pkgs.opentofu}/bin/tofu";
           terranixConfiguration = inputs.terranix.lib.terranixConfiguration {
             inherit system;
             modules = [
@@ -48,8 +48,8 @@
               pkgs.writers.writeBash "apply" ''
                 if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
                 cp ${terranixConfiguration} config.tf.json \
-                  && ${terraform}/bin/terraform init \
-                  && ${terraform}/bin/terraform apply
+                  && ${opentofu} init \
+                  && ${opentofu} apply
               ''
             );
           };
@@ -61,8 +61,8 @@
               pkgs.writers.writeBash "destroy" ''
                 if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
                 cp ${terranixConfiguration} config.tf.json \
-                  && ${terraform}/bin/terraform init \
-                  && ${terraform}/bin/terraform destroy
+                  && ${opentofu} init \
+                  && ${opentofu} destroy
               ''
             );
           };
