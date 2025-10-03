@@ -1,1 +1,2 @@
 export GITHUB_TOKEN="$(passage show github/terranix/admin_token)"
+export TF_VAR_state_encryption="$(passage show github/terranix/encryption_key)"
