@@ -1,0 +1,1 @@
+export GITHUB_TOKEN="$(passage show github/terranix/admin_token)"
