@@ -137,31 +137,29 @@
   github.teams = {
     admins = {
       maintainers = [ "mrvandalo" ];
-      description = ''
-        administration on the terranix project
-      '';
+      description = "administration on the terranix project";
       privacy = "closed";
     };
     maintainers = {
       maintainers = [ "mrvandalo" ];
-      description = ''
-        maintainers, have merge and push permissions on the terranix repositories.
-      '';
-      members = [ "mdarocha" ];
+      description = "maintainers, have merge and push permissions on the terranix repositories.";
+      members = [
+        "mdarocha"
+        "sshine"
+      ];
       privacy = "closed";
     };
     website = {
       maintainers = [ "mrvandalo" ];
-      description = ''
-        team of changing website contents
-      '';
+      description = "team of changing website contents";
+      members = [
+        "sshine"
+      ];
       privacy = "closed";
     };
     artwork = {
       maintainers = [ "mrvandalo" ];
-      description = ''
-        team to modify artwork repositories
-      '';
+      description = "team to modify artwork repositories";
       privacy = "closed";
     };
   };
