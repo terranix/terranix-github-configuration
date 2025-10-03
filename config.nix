@@ -127,7 +127,6 @@
       dismissal_apps = [ ];
       dismissal_teams = [ ];
       dismissal_users = [ ];
-      #include_admins                  = false ;
       require_code_owner_reviews = false;
       require_last_push_approval = false;
       required_approving_review_count = 0;
