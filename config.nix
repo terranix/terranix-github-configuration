@@ -22,8 +22,7 @@
           "admins" = "admin";
           "maintainers" = "maintain";
         };
-        description =
-          "terranix is a terraform.json generator with a nix-like feeling";
+        description = "terranix is a terraform.json generator with a nix-like feeling [maintainer=@sshine, @mdarocha]";
         inherit visibility homepage_url topics vulnerability_alerts has_issues
           delete_branch_on_merge has_downloads license_template;
         extraConfig = {
@@ -44,16 +43,6 @@
           "admins" = "admin";
         };
         description = "terranix project configuration on github";
-        inherit visibility homepage_url topics vulnerability_alerts has_issues
-          delete_branch_on_merge license_template;
-      };
-      terranix-website = {
-        teams = {
-          "admins" = "admin";
-          "maintainers" = "maintain";
-          "website" = "push";
-        };
-        description = "https://terranix.org website";
         inherit visibility homepage_url topics vulnerability_alerts has_issues
           delete_branch_on_merge license_template;
       };
@@ -95,6 +84,16 @@
     repository = "terranix";
     branch = "main";
     enforce_admins = false;
+    required_pull_request_reviews = {
+      dismiss_stale_reviews = false;
+      dismissal_apps = [ ];
+      dismissal_teams = [ ];
+      dismissal_users = [ ];
+      #include_admins                  = false ;
+      require_code_owner_reviews = false;
+      require_last_push_approval = false;
+      required_approving_review_count = 0;
+    };
   };
 
   github.teams = {
@@ -147,23 +146,13 @@
         {
           title = "2.6.0";
           description = "all together";
+          state = "closed";
         }
         {
           title = "3.0.0";
           description = "yolo";
         }
       ];
-    }
-    {
-      owner = "terranix";
-      repository = "terranix-website";
-      milestones = [{
-        title = "1.0.0";
-        description = ''
-          Re-brand the whole terranix website
-          and bring it back on the map
-        '';
-      }];
     }
   ];
 
