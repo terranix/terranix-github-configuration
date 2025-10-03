@@ -1,62 +1,72 @@
 {
+  description = "terranix github account configuration";
+
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
-    flake-utils.url = "github:numtide/flake-utils";
-    terranix = {
-      url = "github:terranix/terranix/develop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    module-github = {
-      url = "github:terranix/terranix-module-github";
-      #url = "git+file:///home/palo/dev/terranix/terranix-module-github";
-    };
+    devshell.url = "github:numtide/devshell";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    module-github.url = "github:terranix/terranix-module-github";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    terranix.inputs.nixpkgs.follows = "nixpkgs";
+    terranix.url = "github:terranix/terranix/develop";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = { self, nixpkgs, flake-utils, terranix, module-github }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        terraform = pkgs.terraform;
-        terranixConfiguration = terranix.lib.terranixConfiguration {
-          inherit system;
-          modules = [
-            module-github.terranixModule
-            ./config.nix
-          ];
-        };
-      in
-      {
-        defaultPackage = terranixConfiguration;
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        ./nix/formatter.nix
+        ./nix/devshells.nix
+      ];
+      systems = [ "x86_64-linux" ];
+      perSystem =
+        {
+          config,
+          self',
+          inputs',
+          pkgs,
+          system,
+          ...
+        }:
+        let
+          terraform = pkgs.terraform;
+          terranixConfiguration = inputs.terranix.lib.terranixConfiguration {
+            inherit system;
+            modules = [
+              inputs.module-github.terranixModule
+              ./config.nix
+            ];
+          };
+        in
+        {
 
-        # nix develop
-        devShell = pkgs.mkShell {
-          buildInputs =
-            [ pkgs.terraform_0_15 terranix.defaultPackage.${system} ];
-        };
+          # nix run ".#apply"
+          apps.apply = {
+            type = "app";
+            program = toString (
+              pkgs.writers.writeBash "apply" ''
+                if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
+                cp ${terranixConfiguration} config.tf.json \
+                  && ${terraform}/bin/terraform init \
+                  && ${terraform}/bin/terraform apply
+              ''
+            );
+          };
 
-        # nix run ".#apply"
-        apps.apply = {
-          type = "app";
-          program = toString (pkgs.writers.writeBash "apply" ''
-            if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
-            cp ${terranixConfiguration} config.tf.json \
-              && ${terraform}/bin/terraform init \
-              && ${terraform}/bin/terraform apply
-          '');
-        };
+          # nix run ".#destroy"
+          apps.destroy = {
+            type = "app";
+            program = toString (
+              pkgs.writers.writeBash "destroy" ''
+                if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
+                cp ${terranixConfiguration} config.tf.json \
+                  && ${terraform}/bin/terraform init \
+                  && ${terraform}/bin/terraform destroy
+              ''
+            );
+          };
 
-        # nix run ".#destroy"
-        apps.destroy = {
-          type = "app";
-          program = toString (pkgs.writers.writeBash "destroy" ''
-            if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
-            cp ${terranixConfiguration} config.tf.json \
-              && ${terraform}/bin/terraform init \
-              && ${terraform}/bin/terraform destroy
-          '');
         };
-
-        # nix run
-        #apps.default = self.apps.${system}.apply;
-      });
+    };
 }

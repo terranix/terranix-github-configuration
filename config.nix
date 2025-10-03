@@ -9,7 +9,10 @@
     let
       visibility = "public";
       homepage_url = "https://terranix.org";
-      topics = [ "nix" "terraform" ];
+      topics = [
+        "nix"
+        "terraform"
+      ];
       vulnerability_alerts = true;
       has_issues = true;
       has_downloads = true;
@@ -23,8 +26,16 @@
           "maintainers" = "maintain";
         };
         description = "terranix is a terraform.json generator with a nix-like feeling [maintainer=@sshine, @mdarocha]";
-        inherit visibility homepage_url topics vulnerability_alerts has_issues
-          delete_branch_on_merge has_downloads license_template;
+        inherit
+          visibility
+          homepage_url
+          topics
+          vulnerability_alerts
+          has_issues
+          delete_branch_on_merge
+          has_downloads
+          license_template
+          ;
         extraConfig = {
           has_discussions = true;
         };
@@ -35,16 +46,31 @@
           "maintainers" = "maintain";
         };
         description = "examples/templates on how to use terranix";
-        inherit visibility homepage_url topics vulnerability_alerts has_issues
-          delete_branch_on_merge has_downloads license_template;
+        inherit
+          visibility
+          homepage_url
+          topics
+          vulnerability_alerts
+          has_issues
+          delete_branch_on_merge
+          has_downloads
+          license_template
+          ;
       };
       terranix-github-configuration = {
         teams = {
           "admins" = "admin";
         };
         description = "terranix project configuration on github";
-        inherit visibility homepage_url topics vulnerability_alerts has_issues
-          delete_branch_on_merge license_template;
+        inherit
+          visibility
+          homepage_url
+          topics
+          vulnerability_alerts
+          has_issues
+          delete_branch_on_merge
+          license_template
+          ;
       };
       terranix-module-github = {
         teams = {
@@ -52,8 +78,15 @@
           "maintainers" = "maintain";
         };
         description = "An opinionated github terranix module.";
-        inherit visibility homepage_url topics vulnerability_alerts has_issues
-          delete_branch_on_merge license_template;
+        inherit
+          visibility
+          homepage_url
+          topics
+          vulnerability_alerts
+          has_issues
+          delete_branch_on_merge
+          license_template
+          ;
       };
       terranix-artwork = {
         teams = {
@@ -63,7 +96,12 @@
         };
         description = "Official artwork of the terranix project.";
         license_template = "mit";
-        inherit visibility homepage_url topics has_issues;
+        inherit
+          visibility
+          homepage_url
+          topics
+          has_issues
+          ;
       };
     };
 
